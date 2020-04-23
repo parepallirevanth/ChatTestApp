@@ -1,0 +1,14 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+[Service]
+User=revanth
+Group=www-data
+WorkingDirectory=/home/revanth/ChatTestApp/chatapplication
+ExecStart=/home/revanth/ChatTestApp/venv/bin/gunicorn --workers 3 --bind unix:/home/revanth/ChatTestApp/chatapplication/chatapp.sock chatapp.wsgi:application
+
+
+[Install]
+WantedBy=multi-user.target
+
+
